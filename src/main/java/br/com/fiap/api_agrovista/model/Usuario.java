@@ -36,11 +36,27 @@ public class Usuario implements UserDetails {
     @Column(name = "senha", nullable = false)
     private String senha;
 
+    @Column(name = "nome_fazenda", nullable = false)
+    private String nomeFazenda;
+
+    @Column(name = "municipio", nullable = false)
+    private String municipio;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @Column(name = "area_hectares", nullable = false)
+    private double areaHectares;
+
+    @Column(name = "cultura", nullable = false)
+    private String cultura;
+
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private RoleUsuario role;
 
     @CreationTimestamp
+    @Column(name = "created_at")
     private LocalDate createdAt;
 
     @ManyToOne
@@ -51,16 +67,61 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(UUID id, String nome, String cpf, String telefone, String email, String senha, RoleUsuario role, LocalDate createdAt, Plano plano) {
+    public Usuario(UUID id, String nome, String cpf, String telefone, String email, String senha, String nomeFazenda, String municipio, String estado, double areaHectares, String cultura, RoleUsuario role, LocalDate createdAt, Plano plano) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
+        this.nomeFazenda = nomeFazenda;
+        this.municipio = municipio;
+        this.estado = estado;
+        this.areaHectares = areaHectares;
+        this.cultura = cultura;
         this.role = role;
         this.createdAt = createdAt;
         this.plano = plano;
+    }
+
+    public String getNomeFazenda() {
+        return nomeFazenda;
+    }
+
+    public void setNomeFazenda(String nomeFazenda) {
+        this.nomeFazenda = nomeFazenda;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public double getAreaHectares() {
+        return areaHectares;
+    }
+
+    public void setAreaHectares(double areaHectares) {
+        this.areaHectares = areaHectares;
+    }
+
+    public String getCultura() {
+        return cultura;
+    }
+
+    public void setCultura(String cultura) {
+        this.cultura = cultura;
     }
 
     @Override
