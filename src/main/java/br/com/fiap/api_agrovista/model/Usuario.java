@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -63,11 +64,17 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "plano_id")
     private Plano plano;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Talhao> talhoes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Conversa> conversas = new ArrayList<>();
+
 
     public Usuario() {
     }
 
-    public Usuario(UUID id, String nome, String cpf, String telefone, String email, String senha, String nomeFazenda, String municipio, String estado, double areaHectares, String cultura, RoleUsuario role, LocalDate createdAt, Plano plano) {
+    public Usuario(UUID id, String nome, String cpf, String telefone, String email, String senha, String nomeFazenda, String municipio, String estado, double areaHectares, String cultura, RoleUsuario role, LocalDate createdAt, Plano plano, List<Talhao> talhoes, List<Conversa> conversas) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -82,6 +89,8 @@ public class Usuario implements UserDetails {
         this.role = role;
         this.createdAt = createdAt;
         this.plano = plano;
+        this.talhoes = talhoes;
+        this.conversas = conversas;
     }
 
     public String getNomeFazenda() {
@@ -234,5 +243,21 @@ public class Usuario implements UserDetails {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    public List<Talhao> getTalhoes() {
+        return talhoes;
+    }
+
+    public void setTalhoes(List<Talhao> talhoes) {
+        this.talhoes = talhoes;
+    }
+
+    public List<Conversa> getConversas() {
+        return conversas;
+    }
+
+    public void setConversas(List<Conversa> conversas) {
+        this.conversas = conversas;
     }
 }
