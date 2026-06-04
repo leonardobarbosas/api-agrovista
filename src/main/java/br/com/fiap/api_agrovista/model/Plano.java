@@ -18,7 +18,7 @@ public class Plano {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "precoMensal", precision = 10, scale = 2)
+    @Column(name = "preco_mensal", precision = 10, scale = 2)
     private BigDecimal precoMensal;
 
     @Column(name = "destaque")

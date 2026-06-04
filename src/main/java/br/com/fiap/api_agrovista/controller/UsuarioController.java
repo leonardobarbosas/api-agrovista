@@ -1,5 +1,6 @@
 package br.com.fiap.api_agrovista.controller;
 
+import br.com.fiap.api_agrovista.dto.usuario.UsuarioLista;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequest;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioResponse;
 import br.com.fiap.api_agrovista.service.UsuarioService;
@@ -33,7 +34,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<UsuarioResponse>> findAll(Pageable pageable) {
+    public ResponseEntity<Page<UsuarioLista>> findAll(Pageable pageable) {
         return ResponseEntity.ok(usuarioService.findAll(pageable));
     }
 

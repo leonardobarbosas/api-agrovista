@@ -1,5 +1,6 @@
 package br.com.fiap.api_agrovista.service;
 
+import br.com.fiap.api_agrovista.dto.usuario.UsuarioLista;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequest;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioResponse;
 import br.com.fiap.api_agrovista.mapper.UsuarioMapper;
@@ -57,10 +58,10 @@ public class UsuarioService {
         return usuarioMapper.usuarioToResponse(usuario);
     }
 
-    public Page<UsuarioResponse> findAll(Pageable pageable) {
+    public Page<UsuarioLista> findAll(Pageable pageable) {
         return usuarioRepository
                 .findAll(pageable)
-                .map(usuarioMapper::usuarioToResponse);
+                .map(usuarioMapper::usuarioToResponseLista);
     }
 
     public UsuarioResponse update(UUID id, UsuarioRequest usuarioRequest) {

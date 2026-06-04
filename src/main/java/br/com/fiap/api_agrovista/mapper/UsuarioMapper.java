@@ -15,13 +15,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class UsuarioMapper {
 
     public UsuarioResponse usuarioToResponse(Usuario usuario) {
-        Link linkPlano = linkTo(methodOn(PlanoController.class).findById(usuario.getPlano().getId())).withSelfRel();
+        Link linkPlano = usuario.getPlano() != null ?
+                linkTo(methodOn(PlanoController.class).findById(usuario.getPlano().getId())).withSelfRel() : null;
         return new UsuarioResponse(usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getEmail(), linkPlano);
     }
 
     public UsuarioLista usuarioToResponseLista(Usuario usuario) {
         Link linkUsuario = linkTo(methodOn(UsuarioController.class).findById(usuario.getId())).withRel("Detalhes do usuario");
-        Link linkPlano = linkTo(methodOn(PlanoController.class).findById(usuario.getPlano().getId())).withSelfRel();
+        Link linkPlano = usuario.getPlano() != null ?
+                linkTo(methodOn(PlanoController.class).findById(usuario.getPlano().getId())).withSelfRel() : null;
+
         return new UsuarioLista(
                 usuario.getNome(),
                 usuario.getCpf(),
