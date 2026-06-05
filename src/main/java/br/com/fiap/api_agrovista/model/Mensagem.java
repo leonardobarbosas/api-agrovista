@@ -16,13 +16,9 @@ public class Mensagem {
     @Column(name = "id_mensagem")
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "conversa_id", nullable = false)
-    private Conversa conversa;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-    private TipoMensagem tipo;
+    private TipoMensagem tipoMensagem;
 
     @Column(name = "conteudo", columnDefinition = "CLOB")
     private String conteudo;
@@ -34,13 +30,17 @@ public class Mensagem {
     @Column(name = "enviado_em")
     private LocalDateTime enviadoEm;
 
+    @ManyToOne
+    @JoinColumn(name = "conversa_id", nullable = false)
+    private Conversa conversa;
+
     public Mensagem() {
     }
 
     public Mensagem(UUID id, Conversa conversa, TipoMensagem tipo, String conteudo, String arquivoNome, LocalDateTime enviadoEm) {
         this.id = id;
         this.conversa = conversa;
-        this.tipo = tipo;
+        this.tipoMensagem = tipo;
         this.conteudo = conteudo;
         this.arquivoNome = arquivoNome;
         this.enviadoEm = enviadoEm;
@@ -63,11 +63,11 @@ public class Mensagem {
     }
 
     public TipoMensagem getTipo() {
-        return tipo;
+        return tipoMensagem;
     }
 
-    public void setTipo(TipoMensagem tipo) {
-        this.tipo = tipo;
+    public void setTipo(TipoMensagem tipoMensagem) {
+        this.tipoMensagem = tipoMensagem;
     }
 
     public String getConteudo() {

@@ -17,20 +17,12 @@ public class Laudo {
     @Column(name = "id_laudo")
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "talhao_id", nullable = false)
-    private Talhao talhao;
-
-    @ManyToOne
-    @JoinColumn(name = "alerta_id")
-    private Alerta alerta;
-
     @Column(name = "evento", nullable = false)
     private String evento;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private StatusLaudo status;
+    private StatusLaudo statusLaudo;
 
     @Column(name = "tamanho_mb", precision = 6, scale = 2)
     private BigDecimal tamanhoMb;
@@ -39,13 +31,22 @@ public class Laudo {
     @Column(name = "gerado_em")
     private LocalDateTime geradoEm;
 
+    @ManyToOne
+    @JoinColumn(name = "alerta_id")
+    private Alerta alerta;
+
+    @ManyToOne
+    @JoinColumn(name = "talhao_id", nullable = false)
+    private Talhao talhao;
+
+
     public Laudo() {
     }
 
     public Laudo(LocalDateTime geradoEm, BigDecimal tamanhoMb, StatusLaudo status, String evento, Alerta alerta, Talhao talhao, UUID id) {
         this.geradoEm = geradoEm;
         this.tamanhoMb = tamanhoMb;
-        this.status = status;
+        this.statusLaudo = status;
         this.evento = evento;
         this.alerta = alerta;
         this.talhao = talhao;
@@ -85,11 +86,11 @@ public class Laudo {
     }
 
     public StatusLaudo getStatus() {
-        return status;
+        return statusLaudo;
     }
 
-    public void setStatus(StatusLaudo status) {
-        this.status = status;
+    public void setStatus(StatusLaudo statusLaudo) {
+        this.statusLaudo = statusLaudo;
     }
 
     public BigDecimal getTamanhoMb() {

@@ -42,10 +42,36 @@ public class SecurityConfigurations {
                                 .requestMatchers(HttpMethod.PUT, "/talhao/**").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/talhao/**").authenticated()
 
+                                .requestMatchers(HttpMethod.POST, "/alerta/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/alerta/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/alerta/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/alerta/**").authenticated()
+
+                                .requestMatchers(HttpMethod.POST, "/conversa/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/conversa/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/conversa/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/conversa/**").authenticated()
+
+                                .requestMatchers(HttpMethod.POST, "/historico/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/historico/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/historico/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/historico/**").authenticated()
+
+                                .requestMatchers(HttpMethod.POST, "/laudo/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/laudo/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/laudo/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/laudo/**").authenticated()
+
+                                .requestMatchers(HttpMethod.POST, "/mensagem/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/mensagem/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/mensagem/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/mensagem/**").authenticated()
+
                                 .requestMatchers(HttpMethod.POST, "/plano/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/plano/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/plano/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/plano/**").hasRole("ADMIN")
+
                                 .requestMatchers(
                                         "/swagger-ui/**",
                                         "/swagger-ui.html",
