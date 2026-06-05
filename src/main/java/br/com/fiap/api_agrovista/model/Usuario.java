@@ -3,7 +3,6 @@ package br.com.fiap.api_agrovista.model;
 import br.com.fiap.api_agrovista.model.enums.RoleUsuario;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

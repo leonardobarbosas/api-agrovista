@@ -37,6 +37,11 @@ public class SecurityConfigurations {
                                 .requestMatchers(HttpMethod.PUT, "/usuario/**").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/usuario/**").authenticated()
 
+                                .requestMatchers(HttpMethod.POST, "/talhao/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/talhao/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/talhao/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/talhao/**").authenticated()
+
                                 .requestMatchers(HttpMethod.POST, "/plano/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/plano/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/plano/**").hasRole("ADMIN")
