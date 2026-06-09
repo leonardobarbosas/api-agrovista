@@ -35,7 +35,7 @@ public record UsuarioRequestUpdate(
         @Size(min = 2, max = 2, message = "Estado deve ser a sigla com 2 letras")
         String estado,
 
-        @NotBlank(message = "A Role é obrigatória")
+        @NotNull(message = "A Role é obrigatória")
         RoleUsuario role,
 
         @NotNull(message = "Área em hectares é obrigatória")
