@@ -2,6 +2,7 @@ package br.com.fiap.api_agrovista.service;
 
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioLista;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequest;
+import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequestUpdate;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioResponse;
 import br.com.fiap.api_agrovista.mapper.UsuarioMapper;
 import br.com.fiap.api_agrovista.model.Plano;
@@ -64,7 +65,7 @@ public class UsuarioService {
                 .map(usuarioMapper::usuarioToResponseLista);
     }
 
-    public UsuarioResponse update(UUID id, UsuarioRequest usuarioRequest) {
+    public UsuarioResponse update(UUID id, UsuarioRequestUpdate usuarioRequest) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 
@@ -79,6 +80,7 @@ public class UsuarioService {
         usuario.setNomeFazenda(usuarioRequest.nomeFazenda());
         usuario.setMunicipio(usuarioRequest.municipio());
         usuario.setEstado(usuarioRequest.estado());
+        usuario.setRole(usuarioRequest.role());
         usuario.setAreaHectares(usuarioRequest.areaHectares());
         usuario.setCultura(usuarioRequest.cultura());
         usuario.setPlano(plano);

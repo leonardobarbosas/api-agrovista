@@ -2,6 +2,7 @@ package br.com.fiap.api_agrovista.controller;
 
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioLista;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequest;
+import br.com.fiap.api_agrovista.dto.usuario.UsuarioRequestUpdate;
 import br.com.fiap.api_agrovista.dto.usuario.UsuarioResponse;
 import br.com.fiap.api_agrovista.service.UsuarioService;
 import jakarta.validation.Valid;
@@ -39,7 +40,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> update(@PathVariable UUID id, @RequestBody @Valid UsuarioRequest request) {
+    public ResponseEntity<UsuarioResponse> update(@PathVariable UUID id, @RequestBody @Valid UsuarioRequestUpdate request) {
         return ResponseEntity.ok(usuarioService.update(id, request));
     }
 

@@ -11,7 +11,6 @@ public record PlanoRequest(
         String nome,
 
         @NotNull(message = "Preço mensal é obrigatório")
-        @Positive(message = "Preço deve ser maior que zero")
         @Digits(integer = 8, fraction = 2, message = "Preço inválido")
         BigDecimal precoMensal,
 
