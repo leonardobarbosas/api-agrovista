@@ -50,12 +50,12 @@ public class SecurityConfigurations {
                                 .requestMatchers(HttpMethod.POST, "/conversa/**").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/conversa/**").authenticated()
                                 .requestMatchers(HttpMethod.PUT, "/conversa/**").authenticated()
-                                .requestMatchers(HttpMethod.DELETE, "/conversa/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/conversa/**").hasRole("ADMIN")
 
                                 .requestMatchers(HttpMethod.POST, "/historico/**").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/historico/**").authenticated()
-                                .requestMatchers(HttpMethod.PUT, "/historico/**").authenticated()
-                                .requestMatchers(HttpMethod.DELETE, "/historico/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/historico/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("ADMIN")
 
                                 .requestMatchers(HttpMethod.POST, "/laudo/**").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/laudo/**").authenticated()
