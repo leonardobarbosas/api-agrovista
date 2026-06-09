@@ -1,8 +1,10 @@
-FROM gradle:8.5-jdk17-alpine AS build
+# Stage 1: Build
+FROM eclipse-temurin:17-jdk-alpine AS build
 WORKDIR /app
 COPY . .
-RUN gradle clean bootJar -x test
+RUN chmod +x gradlew && ./gradlew clean bootJar -x test
 
+# Stage 2: Runtime
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar app.jar
