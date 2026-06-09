@@ -7,6 +7,7 @@ import br.com.fiap.api_agrovista.service.TalhaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,6 +24,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/talhao")
+@SecurityRequirement(name = "Bearer Authentication")
 public class TalhaoController {
 
     private final TalhaoService talhaoService;
